@@ -29,17 +29,33 @@ class RestaurantList extends Component {
         ]
     }
 
-    list = (
-        <div>
-            {   this.state.restaurants.map(restaurant => {
-                    return <RestaurantCard restaurant={restaurant} key={restaurant.id} />
-                })
-            }
-        </div>
-    )
+    editRestaurantHandler(id) {
+        const restaurantIndex = this.state.restaurants.findIndex(r => r.id === id);
+        const restaurant = { ...this.state.restaurants[restaurantIndex] };
+        restaurant.location = 'Buenos Aires';
+        const restaurants = [...this.state.restaurants];
+        restaurants[restaurantIndex] = restaurant;
+        this.setState({
+            restaurants: restaurants
+        });
+    }
+
+    restaurantCard(restaurant){
+        return (
+            <RestaurantCard
+                click={() => this.editRestaurantHandler(restaurant.id)  }
+                restaurant={restaurant}
+                key={restaurant.id}
+            /> 
+         )
+    }  
 
     render() {
-    return this.list;
+        return  (
+            <div>
+                { this.state.restaurants.map(restaurant => this.restaurantCard(restaurant) ) }
+            </div>
+        )
     }
 }
 

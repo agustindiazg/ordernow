@@ -1,11 +1,11 @@
 import React from 'react';
 import './assets/main.css'
-import RestaurantList from './components/restaurants/RestaurantList';
+import Home from './views/Home';
 
 function App() {
   return (
     <div>
-        <RestaurantList></RestaurantList>
+        <Home></Home>
     </div>
     
   );
