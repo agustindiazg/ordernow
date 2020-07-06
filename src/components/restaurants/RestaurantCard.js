@@ -1,6 +1,7 @@
 import React from 'react';
 
 const RestaurantCard = (props) => {
+    console.log('RestaurantCard rendering')
     return (
         <div className="md:flex bg-gray-200 p-6 hover:bg-gray-300" >
             <div className="text-left">

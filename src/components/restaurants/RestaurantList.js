@@ -59,20 +59,8 @@ class RestaurantList extends Component {
         this.setRestaurants(restaurants);
     }
 
-    addRestaurantHandler(event) {
-        console.log('addRestaurantHandler');
-        event.preventDefault()
-        const data = new FormData(event.target);
-        console.log(data);
-        let restaurants = this.getRestaurantsCopy();
-        const newRestaurant = {
-            id: this.randomID(),
-            name: 'El Grill',
-            phone: '2494838213',
-            location: 'Tandil',
-            category: 'Restaurante',
-            isOpen: false
-        };
+    addRestaurantHandler = (newRestaurant) => {
+        let restaurants = [...this.state.restaurants];
         restaurants.push(newRestaurant);
         this.setRestaurants(restaurants);
         this.toggleFormHandler();
@@ -98,7 +86,6 @@ class RestaurantList extends Component {
             <div className="flex bg-gray-200 p-6 items-center">
                 <Btn action="Nuevo Restaurant" click={() => this.toggleFormHandler()}></Btn>
             </div>
-            
         )
     }
 
@@ -111,10 +98,11 @@ class RestaurantList extends Component {
 
     restaurantForm() {
         if (!this.state.showForm) return null;
-        else return ( <RestaurantForm submit={(e) => this.addRestaurantHandler(e)}></RestaurantForm> )
+        else return ( <RestaurantForm newRestaurant={this.addRestaurantHandler}/> )
     }
 
     render() {
+        console.log('RestaurantList');
         return (
             <div>
                 { this.addRestaurantBtn() }

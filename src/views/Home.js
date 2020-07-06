@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import RestaurantList from './../components/restaurants/RestaurantList';
 class Home extends Component {
 
+    componentDidMount() {
+        console.log({HomeMounted: true})
+    }
+    
     render() {
-        return (
-                <div>
-                    <RestaurantList></RestaurantList>
-                </div>
-        ) 
+        console.log('home rendering');
+        return (<RestaurantList />);
     }
 }
 
