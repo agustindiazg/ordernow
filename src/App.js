@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './assets/main.css'
 import Home from './views/Home';
+import Navigation from './views/Navigation';
 
 class App extends Component {
     
@@ -15,7 +16,12 @@ class App extends Component {
 
     render() {
         console.log('app rendering');
-        return ( <Home/> ) 
+        return (
+            <div className="h-screen">
+                <Home />
+                <Navigation /> 
+            </div>
+        ) 
     }
 }
 

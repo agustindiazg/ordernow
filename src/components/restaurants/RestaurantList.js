@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import RestaurantCard from './RestaurantCard';
 import RestaurantForm from './RestaurantForm';
 import Btn from './../utils/Btn'
-
 class RestaurantList extends Component {
     showList = true;
     list = null;
@@ -91,9 +90,11 @@ class RestaurantList extends Component {
 
     toggleFormHandler() {
         console.log('toggleFormHandler',this.state.showForm)
-        this.setState({
-            showForm: !this.state.showForm
-        });
+        this.setState((prevSate, props) =>{
+            return {
+                showForm: !prevSate.showForm
+            }
+        }); 
     }
 
     restaurantForm() {
@@ -105,12 +106,12 @@ class RestaurantList extends Component {
         console.log('RestaurantList');
         return (
             <div>
-                { this.addRestaurantBtn() }
-                { this.restaurantForm() }
+                {this.addRestaurantBtn()}
+                {this.restaurantForm()}
                 { this.restaurantList() }
             </div>
         )
     }
 }
 
-export default RestaurantList;
+export default React.memo(RestaurantList);
