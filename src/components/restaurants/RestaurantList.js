@@ -2,37 +2,21 @@ import React, { Component } from 'react';
 import RestaurantCard from './RestaurantCard';
 import RestaurantForm from './RestaurantForm';
 import Btn from './../utils/Btn'
+import axios from 'axios';
+
 class RestaurantList extends Component {
     showList = true;
     list = null;
     state = {
         showForm : false,
-        restaurants : [
-            {
-                id : this.randomID(),
-                name: 'Tierra de Azafranes',
-                phone: '2494948328',
-                location: 'Tandil',
-                category: 'Restaurante',
-                isOpen: false
-            },
-            {
-                id : this.randomID(),
-                name: 'Antares',
-                phone: '249485742',
-                location: 'Tandil',
-                category: 'Cerveceria',
-                isOpen: true
-            },
-            {
-                id : this.randomID(),
-                name: 'Mostaza',
-                phone: '2494838213',
-                location: 'Tandil',
-                category: 'Comida Rapida',
-                isOpen: true
-            },
-        ]
+        restaurants : []
+    }
+
+    componentDidMount() {
+        console.log({ RestaurantListMounted: true });
+        axios.get('https://my-json-server.typicode.com/agustindiazg/ordernow/restaurants').then(response => {
+            this.setRestaurants(response.data);
+        })
     }
 
     randomID() {
