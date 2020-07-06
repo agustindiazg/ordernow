@@ -7,7 +7,7 @@ class RestaurantList extends Component {
     showList = true;
     list = null;
     state = {
-        showForm : true,
+        showForm : false,
         restaurants : [
             {
                 id : this.randomID(),
@@ -75,6 +75,7 @@ class RestaurantList extends Component {
         };
         restaurants.push(newRestaurant);
         this.setRestaurants(restaurants);
+        this.toggleFormHandler();
     }
 
     restaurantCard(restaurant){
@@ -95,14 +96,14 @@ class RestaurantList extends Component {
     addRestaurantBtn() {
         return (
             <div className="flex bg-gray-200 p-6 items-center">
-                <Btn action="Nuevo Restaurant" click={() => this.openFormHandler()}></Btn>
+                <Btn action="Nuevo Restaurant" click={() => this.toggleFormHandler()}></Btn>
             </div>
             
         )
     }
 
-    openFormHandler() {
-        console.log('openFormHandler',this.state.showForm)
+    toggleFormHandler() {
+        console.log('toggleFormHandler',this.state.showForm)
         this.setState({
             showForm: !this.state.showForm
         });
