@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import RestaurantCard from './RestaurantCard';
+import RestaurantForm from './RestaurantForm';
 import Btn from './../utils/Btn'
 
 class RestaurantList extends Component {
     showList = true;
     list = null;
     state = {
+        showForm : true,
         restaurants : [
             {
                 id : this.randomID(),
@@ -57,7 +59,11 @@ class RestaurantList extends Component {
         this.setRestaurants(restaurants);
     }
 
-    addRestaurantHandler() {
+    addRestaurantHandler(event) {
+        console.log('addRestaurantHandler');
+        event.preventDefault()
+        const data = new FormData(event.target);
+        console.log(data);
         let restaurants = this.getRestaurantsCopy();
         const newRestaurant = {
             id: this.randomID(),
@@ -89,17 +95,30 @@ class RestaurantList extends Component {
     addRestaurantBtn() {
         return (
             <div className="flex bg-gray-200 p-6 items-center">
-                <Btn action="Agregar" click={() => this.addRestaurantHandler()}></Btn>
+                <Btn action="Nuevo Restaurant" click={() => this.openFormHandler()}></Btn>
             </div>
             
         )
     }
 
+    openFormHandler() {
+        console.log('openFormHandler',this.state.showForm)
+        this.setState({
+            showForm: !this.state.showForm
+        });
+    }
+
+    restaurantForm() {
+        if (!this.state.showForm) return null;
+        else return ( <RestaurantForm submit={(e) => this.addRestaurantHandler(e)}></RestaurantForm> )
+    }
+
     render() {
         return (
             <div>
-                {this.addRestaurantBtn()}
-                {this.restaurantList()}
+                { this.addRestaurantBtn() }
+                { this.restaurantForm() }
+                { this.restaurantList() }
             </div>
         )
     }
