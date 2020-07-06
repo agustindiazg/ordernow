@@ -1,0 +1,28 @@
+{
+    "restaurants" : [
+        {
+            "id" : "",
+            "name": "Tierra de Azafranes",
+            "phone": 2494948328,
+            "location": "Tandil",
+            "category": "Restaurante",
+            "isOpen": false
+        },
+        {
+            "id" : "",
+            "name": "",
+            "phone": 249485742,
+            "location": "Tandil",
+            "category": "Cerveceria",
+            "isOpen": true
+        },
+        {
+            "id" : "",
+            "name": "Mostaza",
+            "phone": 2494838213,
+            "location": Tandil,
+            "category": "Comida Rapida",
+            "isOpen": true
+        }
+    ]
+}

@@ -40,8 +40,8 @@ class RestaurantForm extends Component {
     render() {
         console.log('RestaurantForm rendering...');
         return (
-                <WithClass classes="w-full h-screen max-w-xs">
-                    <form className="px-8 pt-6 pb-8 mb-4" onSubmit={(e) => this.newRestaurant(e)}>
+                <WithClass classes="w-screen h-screen max-w-xs">
+                    <form className="px-8 pt-6 pb-8 mb-4 w-full" onSubmit={(e) => this.newRestaurant(e)}>
                         <WithClass classes="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">Nombre</label>
                             <input  onChange={this.handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="McDonald's"/>
