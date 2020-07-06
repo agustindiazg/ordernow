@@ -20,7 +20,7 @@
             "id" : "",
             "name": "Mostaza",
             "phone": 2494838213,
-            "location": Tandil,
+            "location": "Tandil",
             "category": "Comida Rapida",
             "isOpen": true
         }
